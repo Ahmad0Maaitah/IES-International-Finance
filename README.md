@@ -1,11 +1,11 @@
-# FI 355 International Finance: interview materials
+# FI 355 International Finance
 
-Materials prepared by Dr Ahmad Maaitah for the IES Abroad London lecturer interview (FI 355 International Finance, Spring 2027, 18 January to 23 April 2027).
+Materials prepared by Dr Ahmad Maaitah for FI 355 International Finance at IES Abroad London (Spring 2027, 18 January to 23 April 2027).
 
 | What | Where |
 | --- | --- |
 | Hub | `index.html` |
-| Proposed syllabus (web page, Word, PDF) | `syllabus/` |
+| Syllabus (web page, Word, PDF) | `syllabus/` |
 | Deck: how I would teach the module, and why interactive | `approach/` |
 | Deck: ten-minute interactive teaching demonstration (purchasing power parity through the Big Mac index) | `demo/` |
 | Run sheet for the demonstration (minute by minute, pre-flight checklist, likely questions) | `demo/run-sheet.html` |
