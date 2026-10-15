@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Run sheet: the ten-minute demonstration</title>
+<meta name="description" content="Minute-by-minute run sheet for the ten-minute interactive teaching demonstration (purchasing power parity through the Big Mac index), with a pre-flight checklist and likely panel questions.">
+<meta name="author" content="Dr Ahmad Maaitah">
+<meta name="theme-color" content="#0f172a">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<style>
+  .page table.rs td:first-child{white-space:nowrap; font-family:var(--mono); color:var(--accent2); font-weight:700}
+  .page table.rs td:nth-child(2){white-space:nowrap}
+  .page .say{color:var(--ink)} .page .do{color:var(--muted); font-size:13.5px; display:block; margin-top:4px}
+  .page .do b{color:var(--accent)}
+  .page ul.check li{margin:6px 0}
+  .page .qa dt{color:var(--accent2); font-weight:700; margin-top:12px}
+  .page .qa dd{margin:4px 0 0}
+</style>
+</head>
+<body class="page">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="../index.html">FI 355 <span>&middot;</span> International Finance</a>
+    <nav class="links">
+      <a href="../index.html">Hub</a>
+      <a href="index.html">Open the demo deck</a>
+      <a href="../approach/index.html">Approach</a>
+      <a href="../syllabus/index.html">Syllabus</a>
+      <button type="button" class="btn theme-btn">Light</button>
+      <button type="button" class="btn" onclick="window.print()">Print</button>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <h1>Run sheet: "Is the pound too expensive?"</h1>
+    <p class="lead">Ten minutes, seven slides, four interactions. The panel guesses, moves a slider, picks a currency and votes. The same script is in the speaker notes of the deck (press S).</p>
+
+    <h2>Pre-flight, the morning of the interview</h2>
+    <ul class="check">
+      <li>Open <a href="index.html">the demo deck</a> in Chrome or Edge on the laptop that will drive the projector, press F for full screen, press F again to leave it. Check that the arrow keys move the slides and that the slider on slide 4 moves.</li>
+      <li>Check <i>The Economist</i>'s Big Mac index page for the latest edition. If it is newer than January 2026, type the new US and London prices into the two boxes on slide 4 and update the "New York" and "London" numbers in the script below. The deck itself uses the January 2026 edition: US $6.12, London &pound;5.29.</li>
+      <li>Check today's dollar-pound rate (any major quote is fine) and, if it is far from $1.32, set the slider to it on slide 2 and slide 4 before the panel arrives; the big number on slide 2 updates by itself.</li>
+      <li>If the room is bright, press the sun button in the toolbar for the light background; the choice is remembered by the browser.</li>
+      <li>Have the Reset button on slide 3 in mind: it clears the votes if a rehearsal left numbers behind. Reload the page to clear everything.</li>
+      <li>Fallback if the projector fails: the deck runs on a phone or tablet held up to the panel; the numbers are large enough. If no device works, the four interactions can be run with hands and a whiteboard: the maths is three divisions.</li>
+    </ul>
+
+    <h2>Minute by minute</h2>
+    <div class="table-wrap">
+    <table class="rs">
+      <tr><th>Time</th><th>Slide</th><th>Say and do</th></tr>
+      <tr><td>0:00</td><td>1 Title</td><td><span class="say">"I teach finance to students who are not finance specialists, and this panel is in the same position, so this is exactly the room I would have in January. In ten minutes you will guess, move and vote. The only equipment is a browser."</span><span class="do"><b>Do:</b> nothing else. Move on at 0:30.</span></td></tr>
+      <tr><td>0:30</td><td>2 Heathrow</td><td><span class="say">"Who has changed money for a trip? Every one of our students lives this. At today's rate $1,000 becomes about &pound;755. In February it was &pound;736; in November &pound;760. Nobody voted on that price. The market set it: nine and a half trillion dollars a day, most of it in this city." Then: "Is $1.32 the right price for a pound? Finance has a tool for that, and it is a burger."</span><span class="do"><b>Do:</b> drag the slider once so the big number changes, press Today to return.</span></td></tr>
+      <tr><td>2:00</td><td>3 Guess</td><td><span class="say">"Same burger, same recipe, same company. If the exchange rate is right, the London price should be the New York price divided by the rate: $6.12 over 1.32 is &pound;4.62. Hands up: who says &pound;3.99? &pound;4.62? &pound;5.29? &pound;6.49?"</span><span class="do"><b>Do:</b> click each price once per hand, press Reveal. Answer: &pound;5.29. Say: "London charges about 14 per cent more. Either the burger is wrong or the exchange rate is. Economists bet on the exchange rate, and that is purchasing power parity." If someone chose &pound;4.62, celebrate it: that is what the theory predicts.</span></td></tr>
+      <tr><td>3:30</td><td>4 Calculator</td><td><span class="say">"Three numbers. US price $6.12. London price &pound;5.29. Divide: $1.16 per pound. That is the burger's opinion of what a pound should cost. The market says $1.32, so the pound is 14 per cent overvalued: your dollars buy less burger here than at home."</span><span class="do"><b>Do:</b> hand the slider to a panel member or drive it: Fair value (verdict turns green), Dollar strong $1.10 ("London is the bargain and American tourists flood in"), Pound strong $1.50 ("a dollar buys almost nothing here"), Today. Then the line for the panel: "This is what interactive means in my classroom: the student changes a number and the picture answers."</span></td></tr>
+      <tr><td>6:00</td><td>5 World</td><td><span class="say">"Same exercise, fifty countries, one chart. Red is dear for a dollar-holder, green is cheap. Where does a dollar buy the most burger?"</span><span class="do"><b>Do:</b> let the panel choose; click their option. Answer: the yen, 50 per cent undervalued; Tokyo &yen;480, about $3.03; Zurich CHF 7.30, about $9.08. Then: "Look at who is red: Switzerland, Norway, Britain, the euro area. Rich places. That pattern is the clue to the next slide."</span></td></tr>
+      <tr><td>7:30</td><td>6 Why</td><td><span class="say">One sentence per card: burgers do not cross borders; costs are local (rent, wages, 20 per cent VAT); money moves faster than menus ($9.6 trillion a day, 38 per cent in the UK); parity is a compass, not a clock. Then the vote: "By April, will a pound cost your parents less than $1.32?"</span><span class="do"><b>Do:</b> click the tallies as hands go up. Whatever the result: "You have just made a currency forecast. Parity gave you a target, $1.16; your instinct gave you a timing. Separating the two is week 4 part two, and it is also the group project."</span></td></tr>
+      <tr><td>9:00</td><td>7 Takeaway</td><td><span class="say">Read the idea panel slowly: "Exchange rates wander; prices anchor." Then: "Three things you saw: a guess, a slider and a vote. Every week of the course has those three moves on a different concept. Students leave with a number they computed, not a definition they copied."</span><span class="do"><b>Do:</b> stop at 10:00. Offer the links if the panel wants to explore.</span></td></tr>
+    </table>
+    </div>
+
+    <h2>The three numbers, in case the slide is not there</h2>
+    <p>Purchasing power parity rate = US price divided by London price = 6.12 / 5.29 = <b>$1.157 per pound</b>. London burger in dollars at the market rate = 5.29 &times; 1.3249 = <b>$7.01</b>. Pound against parity = market rate divided by PPP rate minus one = 1.3249 / 1.157 &minus; 1 = <b>+14.5 per cent</b>, overvalued. With the January 2026 market rate the index used ($1.338), the figure is +15.7 per cent, which is what <i>The Economist</i> published.</p>
+
+    <h2>If the panel asks</h2>
+    <dl class="qa">
+      <dt>What if a student has never studied finance?</dt><dd>Nothing on this slide needs more than division. Weeks 1 and 2 build the shared language and the warm-up quizzes show me who needs the maths clinic in week 2. The course has no prerequisite by design.</dd>
+      <dt>Is this just a gimmick, or is it assessed?</dt><dd>The same calculation is a midterm problem, and "does the Big Mac index predict where the pound goes" is one of the research-paper topics. The guess and the vote are not graded; the ability to compute and interpret parity is.</dd>
+      <dt>What if the technology fails in class?</dt><dd>The deck runs on any phone and offline once opened, and every interaction has a hands-and-whiteboard version. I have taught the same sessions in rooms with no projector.</dd>
+      <dt>How do you grade participation fairly?</dt><dd>With a rubric: one five-minute news briefing per student, scheduled on a rota in week 1, plus a simple record of engagement in the activities. Attendance alone does not earn participation marks, and the rubric is on Moodle from day one.</dd>
+      <dt>What is your policy on AI?</dt><dd>Allowed for brainstorming, language and code help, disclosed in one line; the theory choice, data work and analysis must be the group's own, and both exams are closed book. Stated in week 1 with examples.</dd>
+      <dt>What do you need from IES?</dt><dd>A projector, Moodle access about three weeks before the term, and a timetable slot for the Bank of England Museum in week 3. Everything else is built.</dd>
+      <dt>Why the burger and not something more serious?</dt><dd>Because the panel just understood purchasing power parity in four minutes. The serious version, the parity conditions with interest rates and the forward market, comes in the second half of the same session, once the idea is in the room.</dd>
+    </dl>
+
+    <h2>Sources used in the demonstration</h2>
+    <ul>
+      <li>The Economist, Big Mac index, January 2026 edition (US $6.12; Britain &pound;5.29, +15.7 per cent; Switzerland CHF 7.30, +48.4 per cent; Japan &yen;480, &minus;50.5 per cent; euro area +15.3; Norway +22.8; Mexico +0.8; Canada &minus;9.4; Brazil &minus;27.3; China &minus;40.2; India &minus;58.9).</li>
+      <li>OFX, GBP to USD interbank rate, 15 October 2026 ($1.3249) and month-end rates November 2025 to October 2026 (range $1.315 to $1.358).</li>
+      <li>BIS Triennial Central Bank Survey 2025 (global turnover $9.6 trillion a day; UK 38 per cent); Bank of England summary of UK results 2025.</li>
+      <li>Eun, Resnick and Chuluun (2024), chapter 6; Rogoff (1996) on the purchasing power parity puzzle.</li>
+    </ul>
+  </main>
+
+  <footer>&copy; 2026 Dr Ahmad Maaitah &middot; FI 355 International Finance interview materials.</footer>
+</div>
+<script src="../assets/js/sim-core.js"></script>
+<script>SIM.initPage();</script>
+</body>
+</html>

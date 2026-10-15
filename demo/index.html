@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Is the pound too expensive? A ten-minute slice of FI 355</title>
+<meta name="description" content="Ten-minute interactive teaching demonstration for the IES Abroad London lecturer interview: purchasing power parity through the Big Mac index. Dr Ahmad Maaitah.">
+<meta name="author" content="Dr Ahmad Maaitah">
+<meta name="theme-color" content="#0f172a">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/vendor/reveal/reset.css">
+<link rel="stylesheet" href="../assets/vendor/reveal/reveal.css">
+<link rel="stylesheet" href="../assets/vendor/reveal/theme/black.css">
+<link rel="stylesheet" href="../assets/css/theme.css">
+<style>
+  .reveal .cols.wide{grid-template-columns:3fr 2fr}
+  .reveal .sim.compact{padding:.4em .6em}
+  .reveal .ctl label{min-width:0; white-space:nowrap}
+  .reveal #ctl-bm-prices .ctl:last-child{flex:1 1 300px}
+  .reveal .why{display:grid; grid-template-columns:1fr 1fr; gap:.5em}
+  .reveal .why .card{font-size:.62em}
+  .reveal .why .card h4{font-size:1.05em}
+  .reveal .vote{display:flex; gap:.5em; justify-content:center; margin:.4em 0}
+  .reveal .vote button{font:inherit; font-size:.62em; font-weight:700; border-radius:999px; padding:.4em 1.2em; cursor:pointer; background:var(--panel); border:2px solid var(--line); color:var(--ink)}
+  .reveal .vote button.on{border-color:var(--accent); color:var(--accent); background:rgba(56,189,248,.12)}
+  .reveal .vote .tally{font-family:var(--mono); color:var(--accent2); margin-left:.4em}
+  .reveal .steps{display:grid; grid-template-columns:1fr 1fr 1fr; gap:.5em; margin:.5em 0}
+  .reveal .steps .card{text-align:center}
+  .reveal .steps .card .big{font-size:1.5em}
+</style>
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+<!-- 0 TITLE -->
+<section class="center">
+  <p class="kicker">FI 355 International Finance &middot; Week 4 &middot; a ten-minute slice</p>
+  <h1>Is the pound too expensive?</h1>
+  <p class="lead">Purchasing power parity, taught with a burger</p>
+  <div class="steps">
+    <div class="card"><div class="big" style="color:#38bdf8">1</div><h4>Guess</h4><p>the London price of something you know</p></div>
+    <div class="card"><div class="big" style="color:#38bdf8">2</div><h4>Move</h4><p>the exchange rate and watch the verdict change</p></div>
+    <div class="card"><div class="big" style="color:#38bdf8">3</div><h4>Vote</h4><p>on where the pound goes next</p></div>
+  </div>
+  <p class="meta"><b>Dr Ahmad Maaitah</b> &middot; teaching demonstration, IES Abroad London lecturer interview</p>
+  <p class="keyhint">Arrow keys move between slides &middot; press S for the speaker script with timings &middot; O for an overview</p>
+  <aside class="notes">
+    <p><b>0:00 to 0:30.</b> Say: "I teach a finance course to students who are not finance specialists, and the panel today is in the same position, so this is exactly the room I would have in January. In ten minutes you will guess, move and vote. The only equipment is a browser."</p>
+    <p>Everything on these slides runs locally. No login, no wifi needed once the page is open.</p>
+  </aside>
+</section>
+
+<!-- 1 HOOK -->
+<section>
+  <div class="timer">minute <b>0:30</b> to <b>2:00</b></div>
+  <h2>You land at Heathrow with $1,000</h2>
+  <div class="cols wide">
+    <div>
+      <div class="sim compact" id="sim-land">
+        <canvas id="cv-land" width="620" height="250"></canvas>
+        <div class="controls-row" id="ctl-land"></div>
+        <div class="note">Month-end interbank rates, dollars per pound, November 2025 to October 2026. Source: OFX historical rates (accessed 15 October 2026).</div>
+      </div>
+      <noscript><div class="sim-fallback">This chart needs JavaScript. It shows the dollar price of one pound moving between about $1.31 and $1.36 over the past year, so $1,000 bought between roughly £736 and £760.</div></noscript>
+    </div>
+    <div>
+      <p class="small muted" style="margin-top:0">At today's rate your $1,000 becomes</p>
+      <div class="bignum" id="land-gbp">&pound;754.80</div>
+      <p class="tiny" id="land-rate">1 pound = $1.3249 (OFX interbank, 15 October 2026, 05:04 UTC)</p>
+      <div class="panel def"><span class="pl">The question for today</span>Somebody, somewhere, decided that one pound costs $1.32. <b>Is that the right price?</b> And how would you even know?</div>
+      <p class="tiny">Drag the slider to see what the same $1,000 was worth at other rates this year.</p>
+    </div>
+  </div>
+  <aside class="notes">
+    <p><b>0:30 to 2:00.</b> Ask the room: "Who has changed money for a trip?" Point at the big number. "Every one of our students lives this. The same $1,000 bought £736 in February and £760 in November. Nobody voted on that price; the market set it, nine and a half trillion dollars of trades a day, most of it in this city."</p>
+    <p>Move the slider once so the number changes. Then land the question: "Is $1.32 the right price for a pound? Finance has a tool for that and it is a burger."</p>
+    <p>Do not explain the chart; it is scenery. The number is the point.</p>
+  </aside>
+</section>
+
+<!-- 2 GUESS -->
+<section>
+  <div class="timer">minute <b>2:00</b> to <b>3:30</b> &middot; interaction 1: guess</div>
+  <h2>One burger, one price?</h2>
+  <p class="small" style="margin-top:0">The <em>law of one price</em>: the same thing should cost the same everywhere once you convert the currency. A Big Mac is the same thing everywhere, which is why <i>The Economist</i> has priced it in 50 countries since 1986.</p>
+  <div class="cols">
+    <div class="card"><h4>New York</h4><p class="big">$6.12</p><p>The Economist, Big Mac index, January 2026 edition (US average price).</p></div>
+    <div class="card"><h4>London: your guess?</h4><p>At $1.32 per pound the law of one price says a Big Mac should cost <b id="g-fair">&pound;4.62</b>. Does it?</p><p class="tiny">Hands up for each price, then I press Reveal.</p></div>
+  </div>
+  <div class="guess" id="guess">
+    <button type="button" data-v="3.99">&pound;3.99<span class="tally">0 votes</span></button>
+    <button type="button" data-v="4.62">&pound;4.62<span class="tally">0 votes</span></button>
+    <button type="button" data-v="5.29" data-ok>&pound;5.29<span class="tally">0 votes</span></button>
+    <button type="button" data-v="6.49">&pound;6.49<span class="tally">0 votes</span></button>
+  </div>
+  <div class="controls-row" style="justify-content:center; font-size:.7em; margin:.2em 0"><button type="button" class="btn primary" id="g-reveal">Reveal</button><button type="button" class="btn" id="g-reset">Reset</button></div>
+  <div class="verdict" id="g-verdict" style="display:none; font-size:.64em"></div>
+  <aside class="notes">
+    <p><b>2:00 to 3:30.</b> "Same burger, same recipe, same company. If the exchange rate is 'right', the London price should be the New York price divided by the rate: $6.12 divided by 1.32 is £4.62. Hands up: who says £3.99? £4.62? £5.29? £6.49?" Click the tallies as hands go up, then Reveal.</p>
+    <p>The answer is £5.29 (The Economist, January 2026). Say: "So London charges 14 per cent more for the same burger. Either the burger is wrong or the exchange rate is. Economists bet on the exchange rate, and that is purchasing power parity: the rate that would make the burger cost the same in both places."</p>
+    <p>If someone picks £4.62, celebrate it: "That is exactly what the theory predicts. Reality disagrees, and the gap is today's lesson."</p>
+  </aside>
+</section>
+
+<!-- 3 CALCULATOR -->
+<section>
+  <div class="timer">minute <b>3:30</b> to <b>6:00</b> &middot; interaction 2: move the rate, read the verdict</div>
+  <h2>The Big Mac calculator</h2>
+  <div class="sim" id="sim-bm">
+    <div class="controls-row" id="ctl-bm-prices"></div>
+    <div class="controls-row" id="ctl-bm"></div>
+    <canvas id="cv-bm" width="900" height="225"></canvas>
+    <div class="verdict" id="bm-verdict">&nbsp;</div>
+    <div class="note">Prices: The Economist, Big Mac index, January 2026 (type new prices when a new edition appears). Rate: OFX interbank, 15 October 2026. <em>PPP rate</em> = US price &divide; London price.</div>
+  </div>
+  <noscript><div class="sim-fallback">This simulation needs JavaScript. With a $6.12 burger in the US and a £5.29 burger in London, the purchasing power parity rate is $1.16 per pound. At a market rate of $1.32 the pound is about 14 per cent overvalued: a dollar buys less burger in London than at home.</div></noscript>
+  <aside class="notes">
+    <p><b>3:30 to 6:00.</b> Walk through the three numbers once: "US price $6.12. London price £5.29. Divide: $1.16 per pound. That is the burger's opinion of what a pound should cost. The market says $1.32. The pound is 14 per cent overvalued: your dollars buy less burger here than at home."</p>
+    <p>Hand the slider to a panel member, or do it yourself: drag to 1.16 ("fair value, the verdict goes green"), drag to 1.00 ("now London is the bargain, and American tourists flood in"), drag to 1.50 ("a dollar buys almost nothing here"). Press the Today button to return.</p>
+    <p>Point out for the panel: "This is what interactive means in my classroom. The student changes a number and the picture answers. Nobody is copying a formula from a slide; they are using one."</p>
+    <p>If a new Economist edition is out, type the new prices into the two boxes live; the whole slide recomputes.</p>
+  </aside>
+</section>
+
+<!-- 4 WORLD + QUIZ -->
+<section>
+  <div class="timer">minute <b>6:00</b> to <b>7:30</b> &middot; interaction 3: pick the bargain</div>
+  <h2>The world in burgers</h2>
+  <div class="cols wide">
+    <div>
+      <div class="sim compact">
+        <canvas id="cv-world" width="600" height="330"></canvas>
+        <div class="note">Over (+) or under (&minus;) valuation of each currency against the dollar, raw Big Mac index, January 2026 edition, The Economist.</div>
+      </div>
+      <noscript><div class="sim-fallback">Chart needs JavaScript. Most overvalued: Swiss franc (+48%). Most undervalued among the ten shown: Indian rupee (&minus;59%), then the Japanese yen (&minus;50%).</div></noscript>
+    </div>
+    <div class="quiz">
+      <div class="q">A dollar-holder wants the most burger for the money. Which currency is the bargain?</div>
+      <div class="opt">Swiss franc</div>
+      <div class="opt">Euro</div>
+      <div class="opt" data-ok>Japanese yen</div>
+      <div class="opt">British pound</div>
+      <div class="explain">In Tokyo a Big Mac is &yen;480, about $3.03 at the market rate: the yen is 50 per cent undervalued. In Zurich it is CHF 7.30, about $9.08. Cheap currencies and rich countries rarely go together, which is the next slide.</div>
+    </div>
+  </div>
+  <aside class="notes">
+    <p><b>6:00 to 7:30.</b> "Same exercise, fifty countries, one chart. Green bars are cheap for a dollar-holder; red bars are expensive. Quiz: where does a dollar buy the most burger?" Let the panel choose; the correct option lights up green, a wrong one red, and the explanation appears.</p>
+    <p>Then the pattern: "Look at who is red: Switzerland, Norway, Britain, the euro area. Rich places. Look at who is green: India, Japan, China, Brazil. The index is not random, which is the clue to why the pound does not simply fall to $1.16."</p>
+  </aside>
+</section>
+
+<!-- 5 WHY -->
+<section>
+  <div class="timer">minute <b>7:30</b> to <b>9:00</b> &middot; interaction 4: the vote</div>
+  <h2>So why doesn't the pound just fall to $1.16?</h2>
+  <div class="why">
+    <div class="card"><h4>Burgers don't cross borders</h4><p>Nobody flies Big Macs from Tokyo to London to sell at a profit, so nothing forces the prices together. Parity works best for things that are traded: oil, copper, iPhones.</p></div>
+    <div class="card"><h4>Costs are local</h4><p>Rent in Mayfair, London wages and 20 per cent VAT on a restaurant meal are inside the price. Rich countries have dear services, so their burgers run "overvalued" (the Balassa-Samuelson effect).</p></div>
+    <div class="card"><h4>Money moves faster than menus</h4><p>Foreign exchange trades <b>$9.6 trillion a day</b>, 38 per cent of it in the UK, which means London (BIS, 2025). Interest rates and investor moods move the rate in seconds; burger prices change twice a year.</p></div>
+    <div class="card"><h4>Parity is a compass, not a clock</h4><p>Over years, currencies drift toward their burger value. Over a semester, they can go anywhere. PPP tells you where fair is, not when you get there.</p></div>
+  </div>
+  <p class="small" style="margin-top:.5em"><b>Vote:</b> by the end of your semester in April, will a pound cost your parents <em>less</em> than $1.32?</p>
+  <div class="vote" id="vote">
+    <button type="button" data-k="less">Less, the pound gets cheaper <span class="tally">0</span></button>
+    <button type="button" data-k="same">About the same <span class="tally">0</span></button>
+    <button type="button" data-k="more">More, the pound gets dearer <span class="tally">0</span></button>
+  </div>
+  <aside class="notes">
+    <p><b>7:30 to 9:00.</b> One sentence per card, no more. Then the vote: click the tallies as hands go up. Whatever the result, the landing line is the same: "You have just made a currency forecast. Purchasing power parity gave you a target, $1.16, and your instinct gave you a timing. Separating the two is Week 4, part two, and it is also the group project: pick a currency, test whether the burger predicted where it went."</p>
+    <p>If someone asks about the pound's history: Black Wednesday 1992 and the September 2022 mini-budget are the two London stories the course uses in Weeks 2 and 6.</p>
+  </aside>
+</section>
+
+<!-- 6 TAKEAWAY -->
+<section>
+  <div class="timer">minute <b>9:00</b> to <b>10:00</b></div>
+  <h2>What stays with you</h2>
+  <div class="panel def" style="font-size:.8em"><span class="pl">The idea</span>Exchange rates wander; prices anchor. <b>Purchasing power parity</b> is the exchange rate at which the same goods cost the same in two countries. The market rate drifts around it for years, which is why your dollars go further in Tokyo than in London.</div>
+  <div class="cols">
+    <div class="card"><h4>What you just did</h4><p>You <b>guessed</b> (a hypothesis), you <b>moved a number</b> (a model) and you <b>voted</b> (a forecast). That is the whole scientific method of international finance in ten minutes, and it is how every week of FI 355 runs.</p></div>
+    <div class="card"><h4>What my students do next</h4><p>Before the next class: price one thing you actually buy (a flat white, a Tube fare, a cinema ticket) in London and at home, and compute your own parity rate. Post it on Moodle. In class we build the "IES index" from the whole group's data.</p></div>
+  </div>
+  <p class="small muted" style="margin-top:.5em">Group project route: "Does the Big Mac index predict where the pound goes?" Theory first, then the data, then the verdict. That is the 40 per cent research paper in the syllabus.</p>
+  <aside class="notes">
+    <p><b>9:00 to 10:00.</b> Read the idea panel slowly. Then: "Three things the panel saw: a guess, a slider and a vote. Every week of the course has those three moves, on a different concept. Students leave with a number they computed themselves, not a definition they copied." Stop at ten minutes. Offer the links if they want to explore.</p>
+  </aside>
+</section>
+
+<!-- 7 REFERENCES -->
+<section>
+  <h2>References</h2>
+  <ul class="refs">
+    <li>Bank for International Settlements (2025) <i>Global FX trading hits $9.6 trillion a day in April 2025 and OTC interest rate derivatives surge 59%</i>. Press release, 30 September. Basel: BIS. Available at: https://www.bis.org/press/p250930.htm (Accessed: 15 October 2026).</li>
+    <li>Bank of England (2025) <i>BIS Triennial Survey of foreign exchange and over-the-counter interest rate derivatives markets in April 2025: summary of UK results</i>. London: Bank of England. Available at: https://www.bankofengland.co.uk/-/media/boe/files/statistics/bis-survey/2025/summary-of-uk-survey-results-2025.pdf (Accessed: 15 October 2026).</li>
+    <li>Eun, C.S., Resnick, B.G. and Chuluun, T. (2024) <i>International Financial Management</i>. 10th edn. New York: McGraw Hill. Chapter 6, International parity relationships and forecasting foreign exchange rates.</li>
+    <li>OFX (2026) <i>GBP to USD exchange rate and historical rates</i>. Available at: https://www.ofx.com/en-hk/exchange-rates/gbp-to-usd/ (Accessed: 15 October 2026).</li>
+    <li>Rogoff, K. (1996) 'The purchasing power parity puzzle', <i>Journal of Economic Literature</i>, 34(2), pp. 647 to 668.</li>
+    <li>The Economist (2026) <i>The Big Mac index</i>, January 2026 edition. London: The Economist. Available at: https://www.economist.com/big-mac-index (Accessed: 15 October 2026, via the published country tables).</li>
+  </ul>
+  <p class="tiny">Every figure on these slides comes from the sources above; the two Big Mac prices and the exchange rate are editable on slide 4 so the demonstration can use the latest edition on the day.</p>
+  <div class="files"><a href="../index.html">Hub</a><a href="../approach/index.html">How I would teach the module</a><a href="../syllabus/index.html">Syllabus</a></div>
+</section>
+
+</div></div>
+
+<script src="../assets/vendor/reveal/reveal.js"></script>
+<script src="../assets/vendor/reveal/plugin/notes/notes.js"></script>
+<script src="../assets/js/sim-core.js"></script>
+<script>
+SIM.initDeck({ hub: '../index.html', links: [{ href: '../approach/index.html', label: 'Approach' }, { href: 'run-sheet.html', label: 'Run sheet' }] });
+
+/* ---------- shared data (every number sourced on the slides) ---------- */
+var RATE_TODAY = 1.3249;                 /* OFX interbank, 15 Oct 2026 */
+var US_PRICE = 6.12, UK_PRICE = 5.29;    /* The Economist, Big Mac index, January 2026 */
+var HISTORY = [                           /* OFX month-end, USD per GBP */
+  ['Nov 25', 1.3150], ['Dec 25', 1.3387], ['Jan 26', 1.3514], ['Feb 26', 1.3580], ['Mar 26', 1.3340], ['Apr 26', 1.3444],
+  ['May 26', 1.3491], ['Jun 26', 1.3322], ['Jul 26', 1.3383], ['Aug 26', 1.3539], ['Sep 26', 1.3420], ['Oct 26', 1.3249]
+];
+var WORLD = [                             /* The Economist, January 2026, raw index vs USD */
+  ['Swiss', 48.4], ['Norway', 22.8], ['UK', 15.7], ['Euro', 15.3], ['Mexico', 0.8],
+  ['Canada', -9.4], ['Brazil', -27.3], ['China', -40.2], ['Japan', -50.5], ['India', -58.9]
+];
+
+/* ---------- slide 1: landing money ---------- */
+(function () {
+  var rate = RATE_TODAY, dollars = 1000;
+  var ctl = document.getElementById('ctl-land');
+  var plot = new SIM.Plot('cv-land', { xmin: 0, xmax: HISTORY.length - 1, ymin: 1.28, ymax: 1.38, title: 'Dollars per pound, month-end', margin: { l: 56, r: 14, t: 30, b: 34 } });
+  function draw() {
+    var C = SIM.colors;
+    plot.clear();
+    plot.axes({ yticks: 5, yfmt: function (v) { return '$' + v.toFixed(2); }, xticks: HISTORY.length - 1, xfmt: function (v) { var i = Math.round(v); return (i % 2 === 0 || i === HISTORY.length - 1) ? HISTORY[i][0] : ''; } });
+    var xs = [], ys = [];
+    HISTORY.forEach(function (h, i) { xs.push(i); ys.push(h[1]); });
+    plot.line(xs, ys, { color: C.accent, width: 2.5 });
+    xs.forEach(function (x, i) { plot.ctx.fillStyle = C.accent; plot.ctx.beginPath(); plot.ctx.arc(plot.xpix(x), plot.ypix(ys[i]), 3.2, 0, 6.3); plot.ctx.fill(); });
+    plot.hline(rate, { color: C.accent2, label: 'slider: $' + rate.toFixed(3) });
+    document.getElementById('land-gbp').innerHTML = '&pound;' + SIM.fmt.money(dollars / rate, '', 2);
+    document.getElementById('land-rate').textContent = rate === RATE_TODAY ? '1 pound = $1.3249 (OFX interbank, 15 October 2026, 05:04 UTC)' : '1 pound = $' + rate.toFixed(3) + ' (slider value; today is $1.3249)';
+  }
+  var sl = SIM.slider(ctl, { label: '$ per pound', min: 1.00, max: 1.60, step: 0.005, value: rate, fmt: function (v) { return '$' + v.toFixed(3); } }, function (v) { rate = v; draw(); });
+  SIM.button(ctl, 'Today', function () { sl.set(RATE_TODAY); });
+  SIM.onRedraw(draw); draw();
+})();
+
+/* ---------- slide 2: guess ---------- */
+(function () {
+  var box = document.getElementById('guess'), verdict = document.getElementById('g-verdict'), revealed = false;
+  var btns = Array.prototype.slice.call(box.querySelectorAll('button'));
+  var tally = btns.map(function () { return 0; });
+  document.getElementById('g-fair').innerHTML = '&pound;' + (US_PRICE / RATE_TODAY).toFixed(2);
+  btns.forEach(function (b, i) { b.addEventListener('click', function () { if (revealed) return; tally[i]++; b.querySelector('.tally').textContent = tally[i] + (tally[i] === 1 ? ' vote' : ' votes'); }); });
+  document.getElementById('g-reveal').addEventListener('click', function () {
+    revealed = true;
+    btns.forEach(function (b) { b.classList.add(b.hasAttribute('data-ok') ? 'hit' : 'miss'); });
+    var over = (UK_PRICE * RATE_TODAY / US_PRICE - 1) * 100;
+    verdict.style.display = 'block'; verdict.className = 'verdict mid';
+    verdict.innerHTML = 'London: <b>&pound;' + UK_PRICE.toFixed(2) + '</b> (The Economist, January 2026). At $' + RATE_TODAY.toFixed(2) + ' that is <b>$' + (UK_PRICE * RATE_TODAY).toFixed(2) + '</b>, ' + over.toFixed(1) + ' per cent more than the $' + US_PRICE.toFixed(2) + ' burger at home. Either the burger is wrong or the exchange rate is.';
+  });
+  document.getElementById('g-reset').addEventListener('click', function () {
+    revealed = false; tally = btns.map(function () { return 0; });
+    btns.forEach(function (b) { b.classList.remove('hit', 'miss'); b.querySelector('.tally').textContent = '0 votes'; });
+    verdict.style.display = 'none';
+  });
+})();
+
+/* ---------- slide 3: the calculator ---------- */
+(function () {
+  var us = US_PRICE, uk = UK_PRICE, rate = RATE_TODAY;
+  var pc = document.getElementById('ctl-bm-prices'), ctl = document.getElementById('ctl-bm'), verdict = document.getElementById('bm-verdict');
+  var plot = new SIM.Plot('cv-bm', { xmin: 0, xmax: 1, ymin: 0, ymax: 10, title: 'What one Big Mac costs, in US dollars', margin: { l: 56, r: 190, t: 30, b: 30 } });
+  function draw() {
+    var C = SIM.colors, ppp = us / uk, ukd = uk * rate, dev = (rate / ppp - 1) * 100;
+    plot.ymax = Math.max(10, Math.ceil(Math.max(us, ukd) + 1));
+    plot.clear();
+    plot.axes({ yticks: 5, yfmt: function (v) { return '$' + v.toFixed(0); }, noxticks: true });
+    var ukColor = dev > 2 ? C.bad : (dev < -2 ? C.good : C.accent2);
+    plot.bars([
+      { label: 'US burger', value: us, color: C.accent, note: '$' + us.toFixed(2) },
+      { label: 'London burger at $' + rate.toFixed(2) + ' per pound', value: ukd, color: ukColor, note: '$' + ukd.toFixed(2) }
+    ], { labelsAtBottom: true, width: 0.5, labelSize: 13, noteSize: 14 });
+    plot.hline(us, { color: C.accent, dash: [4, 4], width: 1 });
+    /* side panel with the three numbers */
+    var x = plot.W - plot.m.r + 14, y = plot.m.t + 6;
+    plot.text(x, y + 12, 'PPP rate', { color: C.text, size: 12 });
+    plot.text(x, y + 34, '$' + ppp.toFixed(3) + ' per £', { color: C.accent2, size: 17, weight: 800 });
+    plot.text(x, y + 60, 'Market rate', { color: C.text, size: 12 });
+    plot.text(x, y + 82, '$' + rate.toFixed(3) + ' per £', { color: C.ink, size: 17, weight: 800 });
+    plot.text(x, y + 108, 'Pound vs parity', { color: C.text, size: 12 });
+    plot.text(x, y + 130, SIM.fmt.pct(dev, 1), { color: ukColor, size: 20, weight: 800 });
+    plot.text(x, y + 150, '= market ÷ PPP − 1', { color: C.muted, size: 11, weight: 400 });
+    var cls = Math.abs(dev) <= 2 ? 'good' : (dev > 0 ? 'bad' : 'mid');
+    var msg;
+    if (Math.abs(dev) <= 2) msg = 'At $' + rate.toFixed(2) + ' the pound is <b>at fair value</b>: the burger costs the same on both sides of the Atlantic.';
+    else if (dev > 0) msg = 'The pound is <b>overvalued by ' + dev.toFixed(1) + ' per cent</b>: your dollars buy less burger in London than at home. London is the expensive side.';
+    else msg = 'The pound is <b>undervalued by ' + Math.abs(dev).toFixed(1) + ' per cent</b>: London is the bargain, and American visitors get more burger for their dollars.';
+    verdict.className = 'verdict ' + cls; verdict.innerHTML = msg;
+  }
+  SIM.number(pc, { label: 'US price $', value: us, step: 0.01, min: 0.5 }, function (v) { us = v; draw(); });
+  SIM.number(pc, { label: 'London price £', value: uk, step: 0.01, min: 0.5 }, function (v) { uk = v; draw(); });
+  var sl = SIM.slider(pc, { label: 'Rate $ per £', min: 1.00, max: 1.60, step: 0.005, value: rate, fmt: function (v) { return '$' + v.toFixed(3); } }, function (v) { rate = v; draw(); });
+  SIM.button(ctl, 'Today $1.32', function () { sl.set(RATE_TODAY); });
+  SIM.button(ctl, 'Fair value', function () { sl.set(Math.round((us / uk) / 0.005) * 0.005); });
+  SIM.button(ctl, 'Dollar strong $1.10', function () { sl.set(1.10); });
+  SIM.button(ctl, 'Pound strong $1.50', function () { sl.set(1.50); });
+  SIM.onRedraw(draw); draw();
+})();
+
+/* ---------- slide 4: the world ---------- */
+(function () {
+  var plot = new SIM.Plot('cv-world', { xmin: 0, xmax: 1, ymin: -70, ymax: 70, title: 'Raw Big Mac index, January 2026: currency vs US dollar', margin: { l: 50, r: 10, t: 30, b: 34 } });
+  function draw() {
+    var C = SIM.colors;
+    plot.clear();
+    plot.axes({ yticks: 14, yfmt: function (v) { var r = Math.round(v); return (r % 20 === 0 || r === -70 || r === 70) ? (r > 0 ? '+' : '') + r + '%' : ''; }, noxticks: true });
+    plot.hline(0, { color: C.axis, dash: [], width: 1.5 });
+    plot.bars(WORLD.map(function (w) { return { label: w[0], value: w[1], color: w[1] > 0 ? C.bad : C.good, note: (w[1] > 0 ? '+' : '−') + Math.abs(w[1]).toFixed(0), noteColor: C.ink }; }), { labelsAtBottom: true, width: 0.6, labelSize: 11, noteSize: 11.5 });
+    plot.legend([{ label: 'dear for a dollar-holder (overvalued)', color: C.bad }, { label: 'cheap for a dollar-holder (undervalued)', color: C.good }], { dx: 250, dy: 4 });
+  }
+  SIM.onRedraw(draw); draw();
+})();
+
+/* ---------- slide 5: the vote ---------- */
+(function () {
+  var box = document.getElementById('vote'), t = {};
+  box.querySelectorAll('button').forEach(function (b) { t[b.dataset.k] = 0; b.addEventListener('click', function () { t[b.dataset.k]++; b.querySelector('.tally').textContent = t[b.dataset.k]; b.classList.add('on'); }); });
+})();
+</script>
+</body>
+</html>
