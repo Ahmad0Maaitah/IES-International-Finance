@@ -192,7 +192,7 @@
     document.body.appendChild(nav);
     applyTheme(readTheme());
     /* attribution */
-    var at = document.createElement('div'); at.className = 'deck-attrib'; at.textContent = '© 2026 Dr Ahmad Maaitah · FI 355 interview materials'; document.body.appendChild(at);
+    var at = document.createElement('div'); at.className = 'deck-attrib'; at.textContent = '© 2026 Dr Ahmad Maaitah · FI 355 International Finance'; document.body.appendChild(at);
     SIM.initQuiz();
   };
 
