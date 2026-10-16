@@ -14,6 +14,4 @@ Everything is static HTML, CSS and vanilla JavaScript: no build step, no server,
 
 Every number on a slide is sourced on the slide. The two Big Mac prices and the exchange rate in the demonstration are editable live, so the session can use the latest edition of The Economist's index on the day.
 
-This is a proposal and a demonstration, not an official IES Abroad publication.
-
 Copyright 2026 Dr Ahmad Maaitah.
