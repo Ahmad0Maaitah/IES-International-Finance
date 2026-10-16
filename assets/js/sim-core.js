@@ -172,6 +172,29 @@
     });
   };
 
+  /* ---------- full screen: clean slides while presenting ---------- */
+  function fsElement() { return document.fullscreenElement || document.webkitFullscreenElement || null; }
+  SIM.toggleFullscreen = function () {
+    var el = document.documentElement;
+    if (fsElement()) { if (document.exitFullscreen) document.exitFullscreen(); else if (document.webkitExitFullscreen) document.webkitExitFullscreen(); }
+    else if (el.requestFullscreen) el.requestFullscreen();
+    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+  };
+  var fsButtons = [], fsTimer = null;
+  function setChrome(hidden) { document.body.classList.toggle('chrome-hidden', hidden); }
+  function fsSleepSoon() { clearTimeout(fsTimer); fsTimer = setTimeout(function () { if (fsElement()) setChrome(true); }, 2600); }
+  function fsWake() { if (!fsElement()) return; setChrome(false); fsSleepSoon(); }
+  function fsChanged() {
+    var on = !!fsElement();
+    fsButtons.forEach(function (b) { b.textContent = on ? '⤢ Exit full screen' : '⤢ Full screen'; b.title = on ? 'Exit full screen (f)' : 'Full screen (f)'; });
+    clearTimeout(fsTimer); setChrome(false);
+    if (on) fsSleepSoon();
+  }
+  document.addEventListener('fullscreenchange', fsChanged);
+  document.addEventListener('webkitfullscreenchange', fsChanged);
+  global.addEventListener('mousemove', fsWake);
+  global.addEventListener('touchstart', fsWake, { passive: true });
+
   /* ---------- deck chrome ---------- */
   SIM.initDeck = function (cfg) {
     cfg = cfg || {};
@@ -188,7 +211,7 @@
     mk('←', 'Previous slide', function () { Reveal.prev(); });
     mk('→', 'Next slide', function () { Reveal.next(); });
     mk('⬚ Overview', 'Overview (o)', function () { Reveal.toggleOverview(); });
-    mk('⤢ Full screen', 'Full screen (f)', function () { var el = document.documentElement; if (document.fullscreenElement) document.exitFullscreen(); else if (el.requestFullscreen) el.requestFullscreen(); });
+    fsButtons.push(mk('⤢ Full screen', 'Full screen (f)', function () { SIM.toggleFullscreen(); }));
     var tb = mk('', 'Light or dark background', function () { SIM.toggleTheme(); }); tb.className = 'theme-btn';
     document.body.appendChild(nav);
     applyTheme(readTheme());
