@@ -256,3 +256,9 @@ html[data-theme="light"] .reveal .sim canvas{background:#0b1220}
 .deck-nav{transition:opacity .4s ease}
 body.chrome-hidden .deck-nav{opacity:0; pointer-events:none}
 body.chrome-hidden, body.chrome-hidden .reveal{cursor:none}
+
+/* Toolbar band: the slide area stops 48px above the bottom edge, so the toolbar
+   never sits on top of slide text, whatever the screen shape */
+.reveal-viewport .reveal{height:calc(100% - 48px)}
+.reveal .progress{position:fixed; left:0; right:0; bottom:0; width:auto}
+.reveal .slide-number{position:fixed}
