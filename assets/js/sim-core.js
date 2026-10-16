@@ -140,7 +140,13 @@
     function show() { val.textContent = fmt(parseFloat(inp.value)); }
     inp.addEventListener('input', function () { show(); onChange(parseFloat(inp.value)); });
     show(); container.appendChild(wrap);
-    return { get: function () { return parseFloat(inp.value); }, set: function (v) { inp.value = v; show(); onChange(parseFloat(inp.value)); }, el: inp };
+    return {
+      get: function () { return parseFloat(inp.value); },
+      set: function (v) { inp.value = v; show(); onChange(parseFloat(inp.value)); },
+      /* exact value for presets: the thumb snaps to the step grid, the number does not */
+      setExact: function (v) { inp.value = v; val.textContent = fmt(v); onChange(v); },
+      el: inp
+    };
   };
   SIM.button = function (container, label, onClick, cls) {
     var b = document.createElement('button'); b.type = 'button'; b.className = 'btn' + (cls ? ' ' + cls : ''); b.textContent = label; b.addEventListener('click', onClick); container.appendChild(b); return b;
@@ -201,7 +207,7 @@
     var plugins = [];
     if (global.RevealNotes) plugins.push(RevealNotes);
     var lean = !!document.querySelector('.reveal.lean');
-    Reveal.initialize({ hash: true, slideNumber: 'c/t', width: 1050, height: 700, margin: 0.06, minScale: 0.2, maxScale: 2.0, controls: false, progress: true, center: lean, transition: 'slide', plugins: plugins });
+    Reveal.initialize({ hash: true, slideNumber: 'c/t', width: 1050, height: 700, margin: 0.04, minScale: 0.2, maxScale: 2.0, controls: false, progress: true, center: lean, transition: 'slide', plugins: plugins });
     /* toolbar */
     var nav = document.createElement('div'); nav.className = 'deck-nav'; nav.setAttribute('role', 'navigation'); nav.setAttribute('aria-label', 'Deck tools');
     var hub = document.createElement('a'); hub.href = cfg.hub || '../index.html'; hub.textContent = '⌂ Hub'; nav.appendChild(hub);
