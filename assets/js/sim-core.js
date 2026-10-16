@@ -177,7 +177,8 @@
     cfg = cfg || {};
     var plugins = [];
     if (global.RevealNotes) plugins.push(RevealNotes);
-    Reveal.initialize({ hash: true, slideNumber: 'c/t', width: 1050, height: 700, margin: 0.06, minScale: 0.2, maxScale: 2.0, controls: false, progress: true, center: false, transition: 'slide', plugins: plugins });
+    var lean = !!document.querySelector('.reveal.lean');
+    Reveal.initialize({ hash: true, slideNumber: 'c/t', width: 1050, height: 700, margin: 0.06, minScale: 0.2, maxScale: 2.0, controls: false, progress: true, center: lean, transition: 'slide', plugins: plugins });
     /* toolbar */
     var nav = document.createElement('div'); nav.className = 'deck-nav'; nav.setAttribute('role', 'navigation'); nav.setAttribute('aria-label', 'Deck tools');
     var hub = document.createElement('a'); hub.href = cfg.hub || '../index.html'; hub.textContent = '⌂ Hub'; nav.appendChild(hub);
