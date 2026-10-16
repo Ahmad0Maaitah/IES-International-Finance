@@ -251,3 +251,8 @@ html[data-theme="light"] [style*="color:#f87171"]{color:#b32b2b !important}
 html[data-theme="light"] [style*="color:#94a3b8"]{color:#4c5873 !important}
 html[data-theme="light"] .reveal .eq, html[data-theme="light"] .reveal pre, html[data-theme="light"] .reveal :not(pre)>code{color:#dbe6ff}
 html[data-theme="light"] .reveal .sim canvas{background:#0b1220}
+
+/* Full screen: the toolbar sleeps while presenting; a nudge of the mouse wakes it */
+.deck-nav{transition:opacity .4s ease}
+body.chrome-hidden .deck-nav{opacity:0; pointer-events:none}
+body.chrome-hidden, body.chrome-hidden .reveal{cursor:none}
