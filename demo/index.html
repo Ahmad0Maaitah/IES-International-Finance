@@ -52,7 +52,6 @@
 
 <!-- 1 HOOK -->
 <section>
-  <div class="timer">minute <b>0:20</b> to <b>1:20</b></div>
   <h2>You land at Heathrow with $1,000</h2>
   <div class="cols wide">
     <div>
@@ -65,7 +64,7 @@
     </div>
     <div>
       <p class="small muted" style="margin-top:0">At today's rate your $1,000 becomes</p>
-      <div class="bignum" id="land-gbp">&pound;754.80</div>
+      <div class="bignum" id="land-gbp">&pound;754.77</div>
       <p class="tiny" id="land-rate">1 pound = $1.3249 (OFX interbank, 15 October 2026)</p>
       <div class="panel def"><span class="pl">The question</span>Who decided a pound costs $1.32? <b>Is that the right price?</b></div>
       <p class="tiny">Drag the slider: the same $1,000 at other rates this year.</p>
@@ -80,12 +79,11 @@
 
 <!-- 2 GUESS -->
 <section>
-  <div class="timer">minute <b>1:20</b> to <b>2:50</b> &middot; interaction 1: guess</div>
   <h2>One burger, one price?</h2>
   <p class="small" style="margin-top:0">The <em>law of one price</em>: the same thing costs the same everywhere, once you convert. A Big Mac is the same thing everywhere.</p>
   <div class="cols">
     <div class="card"><h4>New York</h4><p class="big">$6.12</p><p>The Economist, Big Mac index, January 2026.</p></div>
-    <div class="card"><h4>London: your guess?</h4><p>At $1.32 per pound the law of one price says <b id="g-fair">&pound;4.62</b>. Does it?</p><p class="tiny">Hands up, then Reveal.</p></div>
+    <div class="card" id="g-london"><h4>London: your guess?</h4><p>At $1.32 per pound the law of one price says <b id="g-fair">&pound;4.62</b>. Does it?</p><p class="tiny">Hands up, then Reveal.</p></div>
   </div>
   <div class="guess" id="guess">
     <button type="button" data-v="3.99">&pound;3.99<span class="tally">0 votes</span></button>
@@ -94,7 +92,6 @@
     <button type="button" data-v="6.49">&pound;6.49<span class="tally">0 votes</span></button>
   </div>
   <div class="controls-row" style="justify-content:center; font-size:.7em; margin:.2em 0"><button type="button" class="btn primary" id="g-reveal">Reveal</button><button type="button" class="btn" id="g-reset">Reset</button></div>
-  <div class="verdict" id="g-verdict" style="display:none; font-size:.64em"></div>
   <aside class="notes">
     <p><b>1:20 to 2:50.</b> "Same burger, same recipe, same company. If the exchange rate is 'right', the London price should be the New York price divided by the rate: $6.12 divided by 1.32 is £4.62. Hands up: who says £3.99? £4.62? £5.29? £6.49?" Click the tallies as hands go up, then Reveal.</p>
     <p>The answer is £5.29 (The Economist, January 2026). Say: "So London charges 14 per cent more for the same burger. Either the burger is wrong or the exchange rate is. Economists bet on the exchange rate, and that is purchasing power parity: the rate that would make the burger cost the same in both places."</p>
@@ -104,7 +101,6 @@
 
 <!-- 3 CALCULATOR -->
 <section class="dense">
-  <div class="timer">minute <b>2:50</b> to <b>5:00</b> &middot; interaction 2: move the rate, read the verdict</div>
   <h2>The Big Mac calculator</h2>
   <div class="sim" id="sim-bm">
     <div class="controls-row" id="ctl-bm-prices"></div>
@@ -124,7 +120,6 @@
 
 <!-- 4 WORLD + QUIZ -->
 <section class="dense">
-  <div class="timer">minute <b>5:00</b> to <b>6:10</b> &middot; interaction 3: pick the bargain</div>
   <h2>The world in burgers</h2>
   <div class="cols wide">
     <div>
@@ -151,7 +146,6 @@
 
 <!-- 5 VOTE AND THE IDEA -->
 <section>
-  <div class="timer">minute <b>6:10</b> to <b>7:00</b> &middot; interaction 4: the vote</div>
   <h2>So why doesn't the pound just fall to $1.16?</h2>
   <div class="cols">
     <div class="card"><h4>Money moves faster than menus</h4><p><b>$9.6 trillion a day</b> of currency trading (BIS, 2025). Burger prices change twice a year.</p></div>
@@ -223,28 +217,28 @@ var WORLD = [                             /* The Economist, January 2026, raw in
     document.getElementById('land-rate').textContent = rate === RATE_TODAY ? '1 pound = $1.3249 (OFX interbank, 15 October 2026, 05:04 UTC)' : '1 pound = $' + rate.toFixed(3) + ' (slider value; today is $1.3249)';
   }
   var sl = SIM.slider(ctl, { label: '$ per pound', min: 1.00, max: 1.60, step: 0.005, value: rate, fmt: function (v) { return '$' + v.toFixed(3); } }, function (v) { rate = v; draw(); });
-  SIM.button(ctl, 'Today', function () { sl.set(RATE_TODAY); });
+  SIM.button(ctl, 'Today', function () { sl.setExact(RATE_TODAY); });
   SIM.onRedraw(draw); draw();
 })();
 
 /* ---------- slide 2: guess ---------- */
 (function () {
-  var box = document.getElementById('guess'), verdict = document.getElementById('g-verdict'), revealed = false;
+  var box = document.getElementById('guess'), card = document.getElementById('g-london'), revealed = false;
   var btns = Array.prototype.slice.call(box.querySelectorAll('button'));
   var tally = btns.map(function () { return 0; });
   document.getElementById('g-fair').innerHTML = '&pound;' + (US_PRICE / RATE_TODAY).toFixed(2);
+  var question = card.innerHTML;   /* the answer replaces the question in the same card, so the slide never grows */
   btns.forEach(function (b, i) { b.addEventListener('click', function () { if (revealed) return; tally[i]++; b.querySelector('.tally').textContent = tally[i] + (tally[i] === 1 ? ' vote' : ' votes'); }); });
   document.getElementById('g-reveal').addEventListener('click', function () {
     revealed = true;
     btns.forEach(function (b) { b.classList.add(b.hasAttribute('data-ok') ? 'hit' : 'miss'); });
     var over = (UK_PRICE * RATE_TODAY / US_PRICE - 1) * 100;
-    verdict.style.display = 'block'; verdict.className = 'verdict mid';
-    verdict.innerHTML = 'London: <b>&pound;' + UK_PRICE.toFixed(2) + '</b> (The Economist, January 2026). At $' + RATE_TODAY.toFixed(2) + ' that is <b>$' + (UK_PRICE * RATE_TODAY).toFixed(2) + '</b>, ' + over.toFixed(1) + ' per cent more than the $' + US_PRICE.toFixed(2) + ' burger at home. Either the burger is wrong or the exchange rate is.';
+    card.innerHTML = '<h4>London</h4><p class="big" style="color:var(--bad)">&pound;' + UK_PRICE.toFixed(2) + '</p><p>That is <b>$' + (UK_PRICE * RATE_TODAY).toFixed(2) + '</b> at $' + RATE_TODAY.toFixed(2) + ': ' + over.toFixed(1) + ' per cent more than New York.</p>';
   });
   document.getElementById('g-reset').addEventListener('click', function () {
     revealed = false; tally = btns.map(function () { return 0; });
     btns.forEach(function (b) { b.classList.remove('hit', 'miss'); b.querySelector('.tally').textContent = '0 votes'; });
-    verdict.style.display = 'none';
+    card.innerHTML = question;
   });
 })();
 
@@ -271,7 +265,7 @@ var WORLD = [                             /* The Economist, January 2026, raw in
     plot.text(x, y + 60, 'Market rate', { color: C.text, size: 12 });
     plot.text(x, y + 82, '$' + rate.toFixed(3) + ' per £', { color: C.ink, size: 17, weight: 800 });
     plot.text(x, y + 108, 'Pound vs parity', { color: C.text, size: 12 });
-    plot.text(x, y + 130, SIM.fmt.pct(dev, 1), { color: ukColor, size: 20, weight: 800 });
+    plot.text(x, y + 130, Math.abs(dev) < 0.05 ? '0.0%' : SIM.fmt.pct(dev, 1), { color: ukColor, size: 20, weight: 800 });
     plot.text(x, y + 150, '= market ÷ PPP − 1', { color: C.muted, size: 11, weight: 400 });
     var cls = Math.abs(dev) <= 2 ? 'good' : (dev > 0 ? 'bad' : 'mid');
     var msg;
@@ -283,8 +277,8 @@ var WORLD = [                             /* The Economist, January 2026, raw in
   SIM.number(pc, { label: 'US price $', value: us, step: 0.01, min: 0.5 }, function (v) { us = v; draw(); });
   SIM.number(pc, { label: 'London price £', value: uk, step: 0.01, min: 0.5 }, function (v) { uk = v; draw(); });
   var sl = SIM.slider(pc, { label: 'Rate $ per £', min: 1.00, max: 1.60, step: 0.005, value: rate, fmt: function (v) { return '$' + v.toFixed(3); } }, function (v) { rate = v; draw(); });
-  SIM.button(ctl, 'Today $1.32', function () { sl.set(RATE_TODAY); });
-  SIM.button(ctl, 'Fair value', function () { sl.set(Math.round((us / uk) / 0.005) * 0.005); });
+  SIM.button(ctl, 'Today $1.32', function () { sl.setExact(RATE_TODAY); });
+  SIM.button(ctl, 'Fair value', function () { sl.setExact(us / uk); });   /* exactly parity: market / PPP = 1 */
   SIM.button(ctl, 'Dollar strong $1.10', function () { sl.set(1.10); });
   SIM.button(ctl, 'Pound strong $1.50', function () { sl.set(1.50); });
   SIM.onRedraw(draw); draw();
