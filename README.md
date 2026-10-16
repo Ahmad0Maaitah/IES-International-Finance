@@ -7,7 +7,7 @@ Materials prepared by Dr Ahmad Maaitah for FI 355 International Finance at IES A
 | Hub | `index.html` |
 | Syllabus (web page, Word, PDF) | `syllabus/` |
 | Deck: how I would teach the module, and why interactive | `approach/` |
-| Deck: ten-minute interactive teaching demonstration (purchasing power parity through the Big Mac index) | `demo/` |
+| Deck: seven-minute interactive teaching demonstration (purchasing power parity through the Big Mac index) | `demo/` |
 | Run sheet for the demonstration (minute by minute, pre-flight checklist, likely questions) | `demo/run-sheet.html` |
 
 Everything is static HTML, CSS and vanilla JavaScript: no build step, no server, no login, no tracking. The decks use reveal.js 5.2.0 (MIT licence, vendored in `assets/vendor/reveal/`). Press S in a deck for the speaker notes with timings, O for an overview, F for full screen; the sun and moon button in the toolbar switches to a light background.
